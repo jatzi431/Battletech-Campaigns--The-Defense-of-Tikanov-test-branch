@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://p2lj7lr51rb1"]
+
+[ext_resource type="Script" uid="uid://igf57awt5itm" path="res://Scenes/camera_controller.gd" id="1_qxrlw"]
+[ext_resource type="Script" uid="uid://cwoyxfrw1p2tj" path="res://Scenes/game.gd" id="1_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://cunyyare1gmel" path="res://Scenes/world.tscn" id="2_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://lyv2sq83dnte" path="res://Scenes/Scenes/turn_manager.tscn" id="4_3dryh"]
+[ext_resource type="Script" uid="uid://w272vbpc68lh" path="res://Scenes/Scripts/turn_button.gd" id="5_wowpa"]
+
+[node name="Game" type="Node2D" unique_id=1355912769]
+script = ExtResource("1_wrm1d")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1915030604]
+script = ExtResource("1_qxrlw")
+
+[node name="World" parent="." unique_id=831401553 instance=ExtResource("2_wrm1d")]
+
+[node name="TurnManager" parent="." unique_id=920751588 instance=ExtResource("4_3dryh")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=818519019]
+
+[node name="Turn Button" type="Button" parent="CanvasLayer" unique_id=213085794]
+offset_left = 1001.0
+offset_top = 11.0
+offset_right = 1060.0
+offset_bottom = 54.0
+text = "End Turn"
+script = ExtResource("5_wowpa")
+
+[connection signal="pressed" from="CanvasLayer/Turn Button" to="TurnManager" method="_on_turn_button_pressed"]

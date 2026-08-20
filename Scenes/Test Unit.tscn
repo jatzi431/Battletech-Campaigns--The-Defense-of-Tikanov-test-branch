@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cm0i4ddj35xu"]
+
+[ext_resource type="Texture2D" uid="uid://uwft3gmw045b" path="res://Sprites/Simple Light Mek Unit Counter-Nato Style.jpg" id="1_7sk4s"]
+[ext_resource type="Script" uid="uid://31eys3csvhfd" path="res://Scenes/test_unit.gd" id="1_cygod"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cygod"]
+size = Vector2(28, 14)
+
+[node name="Test Unit" type="Area2D" unique_id=39206796]
+script = ExtResource("1_cygod")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1016550289]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_7sk4s")
+
+[node name="Element_Container" type="Node2D" parent="." unique_id=1450571738]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1082433142]
+shape = SubResource("RectangleShape2D_cygod")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1784733817]
+visible = false
+points = PackedVector2Array(-14, -7, -14, 7, 14, 7, 14, -7, -14, -7)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
