@@ -8,10 +8,11 @@ extends Node2D
 enum Phase {Planning, Executing }
 
 signal phase_changed(new_phase)
+signal turn_ended
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	self.turn_ended.connect($"../CanvasLayer/Date_Label"._on_turn_ended)
 
 func set_phase(new_phase: Phase) -> void:
 	var current_phase = new_phase
@@ -56,3 +57,4 @@ func run_execution_phase() -> void:
 func _on_turn_button_pressed() -> void:
 	print("Ending Turn")
 	set_phase(Phase.Executing)
+	emit_signal("turn_ended")
